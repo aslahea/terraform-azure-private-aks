@@ -1,0 +1,29 @@
+# Local .terraform directories and cache
+**/.terraform/*
+.terraform/
+
+# .tfstate files (containing runtime state and sensitive data)
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local env files / credentials
+.env
+.envrc
+
+# Ignore variables files which may contain sensitive values (like SSH keys, passwords, client secrets)
+*.tfvars
+*.tfvars.json
+
+# CLI configuration files
+.terraformrc
+terraform.rc
