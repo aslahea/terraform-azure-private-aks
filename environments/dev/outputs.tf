@@ -40,3 +40,19 @@ output "acr_login_server" {
   value       = module.acr.acr_login_server
   description = "The login server URL of the Azure Container Registry."
 }
+
+# AKS Outputs
+output "aks_cluster_name" {
+  value       = module.aks.aks_cluster_name
+  description = "The name of the AKS cluster."
+}
+
+output "aks_cluster_id" {
+  value       = module.aks.aks_cluster_id
+  description = "The Resource ID of the AKS cluster."
+}
+
+output "aks_control_plane_fqdn" {
+  value       = module.aks.aks_control_plane_fqdn
+  description = "The private FQDN of the AKS API server."
+}
