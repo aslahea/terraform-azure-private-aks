@@ -25,7 +25,7 @@ acr_admin_enabled = false
 # AKS variables
 aks_name                  = "week42-aks"
 dns_prefix                = "week42aks"
-kubernetes_version        = "1.30"
+kubernetes_version        = "1.33"
 node_count                = 1
 vm_size                   = "Standard_D2s_v3"
 private_cluster_enabled   = true
@@ -36,3 +36,20 @@ private_dns_zone_id       = null
 tenant_id                 = null
 azure_rbac_enabled        = true
 admin_group_object_ids    = []
+
+# Roles
+aks_network_role_name     = "Network Contributor"
+aks_acr_role_name         = "AcrPull"
+aks_dns_role_name         = "Private DNS Zone Contributor"
+
+# DNS Zone Settings
+private_dns_zone_name     = "privatelink.centralindia.azmk8s.io"
+vnet_link_name            = "week42-vnet-link"
+
+# Validation VM Settings
+validation_vm_name              = "week42-validation-vm"
+validation_vm_size              = "Standard_D2s_v3"
+validation_vm_admin_username    = "azureuser"
+validation_vm_ssh_public_key_path = "/home/ubuntu/.ssh/id_rsa.pub" # <--- Path to your SSH public key
+validation_vm_public_ip_enabled = true
+allowed_ssh_source_address_prefix = "*" # <--- Restricted SSH IP or "*"

@@ -125,3 +125,58 @@ variable "admin_group_object_ids" {
   type        = list(string)
   description = "A list of Object IDs of Microsoft Entra ID Groups that should have admin access to the cluster."
 }
+
+variable "aks_network_role_name" {
+  type        = string
+  description = "The role definition name to assign to the AKS control plane identity over the VNet."
+}
+
+variable "aks_acr_role_name" {
+  type        = string
+  description = "The role definition name to assign to the AKS Kubelet identity over the ACR."
+}
+
+variable "aks_dns_role_name" {
+  type        = string
+  description = "The role definition name to assign to the AKS control plane identity over the Private DNS Zone."
+}
+
+variable "private_dns_zone_name" {
+  type        = string
+  description = "The name of the private DNS zone."
+}
+
+variable "vnet_link_name" {
+  type        = string
+  description = "The name of the VNet link."
+}
+
+variable "validation_vm_name" {
+  type        = string
+  description = "The name of the validation VM."
+}
+
+variable "validation_vm_size" {
+  type        = string
+  description = "The size of the validation VM."
+}
+
+variable "validation_vm_admin_username" {
+  type        = string
+  description = "The username of the admin user for the validation VM."
+}
+
+variable "validation_vm_ssh_public_key_path" {
+  type        = string
+  description = "The local file path to the SSH public key for the validation VM."
+}
+
+variable "validation_vm_public_ip_enabled" {
+  type        = bool
+  description = "Whether a public IP address should be allocated for the validation VM."
+}
+
+variable "allowed_ssh_source_address_prefix" {
+  type        = string
+  description = "The source IP or CIDR block allowed to SSH into the validation VM."
+}

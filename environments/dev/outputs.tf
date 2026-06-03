@@ -56,3 +56,46 @@ output "aks_control_plane_fqdn" {
   value       = module.aks.aks_control_plane_fqdn
   description = "The private FQDN of the AKS API server."
 }
+
+# Role Assignment Outputs
+output "aks_network_contributor_role_assignment_id" {
+  value       = module.aks_network_contributor.role_assignment_id
+  description = "The ID of the Network Contributor Role Assignment."
+}
+
+output "aks_acr_pull_role_assignment_id" {
+  value       = module.aks_acr_role_assignment.role_assignment_id
+  description = "The ID of the AcrPull Role Assignment."
+}
+
+# DNS Zone Outputs
+output "private_dns_zone_id" {
+  value       = module.dns_zone.private_dns_zone_id
+  description = "The Resource ID of the Private DNS Zone."
+}
+
+output "private_dns_zone_name" {
+  value       = module.dns_zone.private_dns_zone_name
+  description = "The name of the Private DNS Zone."
+}
+
+output "aks_dns_contributor_role_assignment_id" {
+  value       = module.aks_dns_contributor.role_assignment_id
+  description = "The ID of the Private DNS Zone Contributor Role Assignment."
+}
+
+# Validation VM Outputs
+output "validation_vm_id" {
+  value       = module.validation_vm.vm_id
+  description = "The Resource ID of the validation VM."
+}
+
+output "validation_vm_private_ip" {
+  value       = module.validation_vm.vm_private_ip
+  description = "The private IP address of the validation VM."
+}
+
+output "validation_vm_public_ip" {
+  value       = module.validation_vm.vm_public_ip
+  description = "The public IP address of the validation VM (if enabled)."
+}
