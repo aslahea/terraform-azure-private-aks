@@ -42,3 +42,20 @@ variable "vm_subnet_prefix" {
   type        = list(string)
   description = "The address prefixes for the validation VM subnet."
 }
+
+variable "acr_name" {
+  type        = string
+  description = "The name of the Azure Container Registry."
+}
+
+variable "acr_sku" {
+  type        = string
+  description = "The SKU of the Azure Container Registry."
+  default     = "Premium"
+}
+
+variable "acr_admin_enabled" {
+  type        = bool
+  description = "Whether the admin user is enabled for the ACR."
+  default     = false
+}

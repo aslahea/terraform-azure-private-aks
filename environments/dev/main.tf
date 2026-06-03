@@ -20,3 +20,14 @@ module "vnet" {
   vm_subnet_name    = var.vm_subnet_name
   vm_subnet_prefix  = var.vm_subnet_prefix
 }
+
+module "acr" {
+  source = "../../modules/acr"
+
+  acr_name            = var.acr_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  sku                 = var.acr_sku
+  admin_enabled       = var.acr_admin_enabled
+  tags                = var.tags
+}
