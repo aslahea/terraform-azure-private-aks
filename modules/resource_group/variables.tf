@@ -6,7 +6,6 @@ variable "resource_group_name" {
 variable "location" {
   type        = string
   description = "The Azure region where resources will be created."
-  default     = "eastus"
 }
 
 variable "tags" {
