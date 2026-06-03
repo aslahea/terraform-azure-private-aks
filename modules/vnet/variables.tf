@@ -31,20 +31,19 @@ variable "aks_subnet_prefix" {
   default     = ["10.240.0.0/22"]
 }
 
-variable "validation_subnet_name" {
+variable "vm_subnet_name" {
   type        = string
-  description = "The name of the validation subnet."
+  description = "The name of the validation VM subnet."
   default     = "snet-validation"
 }
 
-variable "validation_subnet_prefix" {
+variable "vm_subnet_prefix" {
   type        = list(string)
-  description = "The address prefixes for the validation subnet."
+  description = "The address prefixes for the validation VM subnet."
   default     = ["10.240.4.0/24"]
 }
 
 variable "tags" {
   type        = map(string)
   description = "Tags to apply to resources."
-  default     = {}
 }
