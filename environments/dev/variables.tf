@@ -120,12 +120,6 @@ variable "private_dns_zone_id" {
   default     = null
 }
 
-variable "user_assigned_identity_id" {
-  type        = string
-  description = "The Resource ID of the User-Assigned Managed Identity for the AKS control plane."
-  default     = null
-}
-
 variable "tenant_id" {
   type        = string
   description = "The Tenant ID for Microsoft Entra ID authentication."

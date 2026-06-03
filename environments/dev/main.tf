@@ -32,6 +32,21 @@ module "acr" {
   tags                = var.tags
 }
 
+# 1. User-Assigned Identity for the AKS Control Plane
+resource "azurerm_user_assigned_identity" "aks_identity" {
+  name                = "mi-${var.aks_name}-control-plane"
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  tags                = var.tags
+}
+
+# 2. Grant Network Contributor on the VNet to the Control Plane Identity
+resource "azurerm_role_assignment" "aks_network_contributor" {
+  scope                = module.vnet.vnet_id
+  role_definition_name = "Network Contributor"
+  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
+}
+
 module "aks" {
   source = "../../modules/aks"
 
@@ -46,13 +61,20 @@ module "aks" {
   vm_size            = var.vm_size
   aks_subnet_id      = module.vnet.aks_subnet_id
 
-  private_cluster_enabled = var.private_cluster_enabled
-  enable_auto_scaling     = var.enable_auto_scaling
-  minimum_nodes           = var.minimum_nodes
-  maximum_nodes           = var.maximum_nodes
-  private_dns_zone_id     = var.private_dns_zone_id
-  user_assigned_identity_id = var.user_assigned_identity_id
-  tenant_id              = var.tenant_id
-  azure_rbac_enabled     = var.azure_rbac_enabled
-  admin_group_object_ids = var.admin_group_object_ids
+  private_cluster_enabled   = var.private_cluster_enabled
+  enable_auto_scaling       = var.enable_auto_scaling
+  minimum_nodes             = var.minimum_nodes
+  maximum_nodes             = var.maximum_nodes
+  private_dns_zone_id       = var.private_dns_zone_id
+  user_assigned_identity_id = azurerm_user_assigned_identity.aks_identity.id
+  tenant_id                 = var.tenant_id
+  azure_rbac_enabled        = var.azure_rbac_enabled
+  admin_group_object_ids    = var.admin_group_object_ids
+}
+
+# 3. Grant AcrPull on the ACR to the AKS Kubelet Identity
+resource "azurerm_role_assignment" "aks_acr_pull" {
+  scope                = module.acr.acr_id
+  role_definition_name = "AcrPull"
+  principal_id         = module.aks.aks_kubelet_identity_object_id
 }
