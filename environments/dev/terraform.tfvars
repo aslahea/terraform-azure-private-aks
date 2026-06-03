@@ -21,3 +21,19 @@ vm_subnet_prefix  = ["10.240.4.0/24"]
 acr_name          = "acrweek42aslah"
 acr_sku           = "Premium"
 acr_admin_enabled = false
+
+# AKS variables
+aks_name                  = "week42-aks"
+dns_prefix                = "week42aks"
+kubernetes_version        = "1.30"
+node_count                = 1
+vm_size                   = "Standard_D2s_v3"
+private_cluster_enabled   = true
+enable_auto_scaling       = true
+minimum_nodes             = 1
+maximum_nodes             = 3
+private_dns_zone_id       = null
+user_assigned_identity_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/week42-private-aks-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/week42-aks-identity"
+tenant_id                 = null
+azure_rbac_enabled        = true
+admin_group_object_ids    = []
