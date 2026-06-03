@@ -29,3 +29,14 @@ output "vm_subnet_id" {
   value       = module.vnet.vm_subnet_id
   description = "The ID of the validation VM Subnet."
 }
+
+# ACR Outputs
+output "acr_id" {
+  value       = module.acr.acr_id
+  description = "The ID of the Azure Container Registry."
+}
+
+output "acr_login_server" {
+  value       = module.acr.acr_login_server
+  description = "The login server URL of the Azure Container Registry."
+}

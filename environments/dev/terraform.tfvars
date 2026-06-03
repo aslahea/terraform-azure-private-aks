@@ -16,3 +16,8 @@ aks_subnet_name   = "snet-aks"
 aks_subnet_prefix = ["10.240.0.0/22"]
 vm_subnet_name    = "snet-validation"
 vm_subnet_prefix  = ["10.240.4.0/24"]
+
+# ACR variables
+acr_name          = "acrweek42aslah"
+acr_sku           = "Premium"
+acr_admin_enabled = false
