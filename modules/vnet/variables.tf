@@ -47,3 +47,9 @@ variable "tags" {
   type        = map(string)
   description = "Tags to apply to resources."
 }
+
+variable "allowed_ssh_source_address_prefix" {
+  type        = string
+  description = "The source IP or CIDR block allowed to SSH into the validation VM."
+  default     = "*"
+}

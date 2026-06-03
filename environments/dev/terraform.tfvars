@@ -46,3 +46,4 @@ validation_vm_size              = "Standard_D2s_v3"
 validation_vm_admin_username    = "azureuser"
 validation_vm_ssh_public_key    = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHxh/xAbP6mVotV/yhbNwawZS9QdA2i69d+KVWYua4qyEr7FCQKegnovvaC37UzpQr9XC7zZsaqCA8wZr5m1TEzTCWB5iIBKgG27YRPU1gAXYEDebitLz8nANdVuzgLpx3XzAuKMI2rNQkyJL4UjVxTyFR0cEpgYxgdrTA9J10ozzlGT18cuJ26SAFKrP3fEiWhEFfZsoLFIY8KEGHUXDuRBV4XeXMuBk0ey0cty0Tbp1/uU2b3ieN9DW5whJ/m4W7PbHTbsNXi5yKXyabesuSk/z6E2x9H7p8O7CPDlRnW+nFOswCVIK+C1rcqNpoYRbJU6vDSO+d4EHLbcq2jOSl"
 validation_vm_public_ip_enabled = true
+allowed_ssh_source_address_prefix = "*"

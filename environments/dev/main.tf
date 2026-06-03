@@ -13,12 +13,13 @@ module "vnet" {
   location            = module.resource_group.location
   tags                = var.tags
 
-  vnet_name         = var.vnet_name
-  address_space     = var.address_space
-  aks_subnet_name   = var.aks_subnet_name
-  aks_subnet_prefix = var.aks_subnet_prefix
-  vm_subnet_name    = var.vm_subnet_name
-  vm_subnet_prefix  = var.vm_subnet_prefix
+  vnet_name                         = var.vnet_name
+  address_space                     = var.address_space
+  aks_subnet_name                   = var.aks_subnet_name
+  aks_subnet_prefix                 = var.aks_subnet_prefix
+  vm_subnet_name                    = var.vm_subnet_name
+  vm_subnet_prefix                  = var.vm_subnet_prefix
+  allowed_ssh_source_address_prefix = var.allowed_ssh_source_address_prefix
 }
 
 module "acr" {

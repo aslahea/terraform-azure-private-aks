@@ -175,3 +175,8 @@ variable "validation_vm_public_ip_enabled" {
   type        = bool
   description = "Whether a public IP address should be allocated for the validation VM."
 }
+
+variable "allowed_ssh_source_address_prefix" {
+  type        = string
+  description = "The source IP or CIDR block allowed to SSH into the validation VM."
+}
