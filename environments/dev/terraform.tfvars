@@ -39,3 +39,5 @@ admin_group_object_ids    = []
 aks_network_role_name     = "Network Contributor"
 aks_acr_role_name         = "AcrPull"
 aks_dns_role_name         = "Private DNS Zone Contributor"
+private_dns_zone_name     = "privatelink.centralindia.azmk8s.io"
+vnet_link_name            = "week42-vnet-link"

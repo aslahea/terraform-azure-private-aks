@@ -36,10 +36,10 @@ module "acr" {
 module "dns_zone" {
   source = "../../modules/dns_zone"
 
-  private_dns_zone_name = "privatelink.${module.resource_group.location}.azmk8s.io"
+  private_dns_zone_name = var.private_dns_zone_name
   resource_group_name   = module.resource_group.resource_group_name
   vnet_id               = module.vnet.vnet_id
-  vnet_link_name        = "${var.vnet_name}-link"
+  vnet_link_name        = var.vnet_link_name
   tags                  = var.tags
 }
 

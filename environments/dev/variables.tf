@@ -140,3 +140,13 @@ variable "aks_dns_role_name" {
   type        = string
   description = "The role definition name to assign to the AKS control plane identity over the Private DNS Zone."
 }
+
+variable "private_dns_zone_name" {
+  type        = string
+  description = "The name of the private DNS zone."
+}
+
+variable "vnet_link_name" {
+  type        = string
+  description = "The name of the VNet link."
+}
