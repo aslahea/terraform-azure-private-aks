@@ -166,9 +166,9 @@ variable "validation_vm_admin_username" {
   description = "The username of the admin user for the validation VM."
 }
 
-variable "validation_vm_ssh_public_key" {
+variable "validation_vm_ssh_public_key_path" {
   type        = string
-  description = "The public key of the admin user for the validation VM."
+  description = "The local file path to the SSH public key for the validation VM."
 }
 
 variable "validation_vm_public_ip_enabled" {

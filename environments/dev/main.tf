@@ -113,7 +113,7 @@ module "validation_vm" {
   resource_group_name = module.resource_group.resource_group_name
   subnet_id           = module.vnet.vm_subnet_id
   admin_username      = var.validation_vm_admin_username
-  ssh_public_key      = var.validation_vm_ssh_public_key
+  ssh_public_key      = file(var.validation_vm_ssh_public_key_path)
   vm_size             = var.validation_vm_size
   public_ip_enabled   = var.validation_vm_public_ip_enabled
   tags                = var.tags
