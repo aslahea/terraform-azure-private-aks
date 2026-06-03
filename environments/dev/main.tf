@@ -102,3 +102,18 @@ module "aks_acr_role_assignment" {
   scope                = module.acr.acr_id
   role_definition_name = var.aks_acr_role_name
 }
+
+# 6. Validation VM for verifying Private Link connectivity
+module "validation_vm" {
+  source = "../../modules/validation_vm"
+
+  vm_name             = var.validation_vm_name
+  location            = module.resource_group.location
+  resource_group_name = module.resource_group.resource_group_name
+  subnet_id           = module.vnet.vm_subnet_id
+  admin_username      = var.validation_vm_admin_username
+  ssh_public_key      = var.validation_vm_ssh_public_key
+  vm_size             = var.validation_vm_size
+  public_ip_enabled   = var.validation_vm_public_ip_enabled
+  tags                = var.tags
+}

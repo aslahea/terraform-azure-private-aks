@@ -150,3 +150,28 @@ variable "vnet_link_name" {
   type        = string
   description = "The name of the VNet link."
 }
+
+variable "validation_vm_name" {
+  type        = string
+  description = "The name of the validation VM."
+}
+
+variable "validation_vm_size" {
+  type        = string
+  description = "The size of the validation VM."
+}
+
+variable "validation_vm_admin_username" {
+  type        = string
+  description = "The username of the admin user for the validation VM."
+}
+
+variable "validation_vm_ssh_public_key" {
+  type        = string
+  description = "The public key of the admin user for the validation VM."
+}
+
+variable "validation_vm_public_ip_enabled" {
+  type        = bool
+  description = "Whether a public IP address should be allocated for the validation VM."
+}

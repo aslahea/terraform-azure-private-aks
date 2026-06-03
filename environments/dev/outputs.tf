@@ -83,3 +83,19 @@ output "aks_dns_contributor_role_assignment_id" {
   value       = module.aks_dns_contributor.role_assignment_id
   description = "The ID of the Private DNS Zone Contributor Role Assignment."
 }
+
+# Validation VM Outputs
+output "validation_vm_id" {
+  value       = module.validation_vm.vm_id
+  description = "The Resource ID of the validation VM."
+}
+
+output "validation_vm_private_ip" {
+  value       = module.validation_vm.vm_private_ip
+  description = "The private IP address of the validation VM."
+}
+
+output "validation_vm_public_ip" {
+  value       = module.validation_vm.vm_public_ip
+  description = "The public IP address of the validation VM (if enabled)."
+}
