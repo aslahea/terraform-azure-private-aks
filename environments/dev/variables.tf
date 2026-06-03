@@ -53,13 +53,11 @@ variable "acr_name" {
 variable "acr_sku" {
   type        = string
   description = "The SKU of the Azure Container Registry."
-  default     = "Premium"
 }
 
 variable "acr_admin_enabled" {
   type        = bool
   description = "Whether the admin user is enabled for the ACR."
-  default     = false
 }
 
 # AKS variables
@@ -81,59 +79,49 @@ variable "kubernetes_version" {
 variable "node_count" {
   type        = number
   description = "The default number of nodes in the AKS cluster."
-  default     = 1
 }
 
 variable "vm_size" {
   type        = string
   description = "The type/size of nodes in the AKS cluster."
-  default     = "Standard_D2s_v3"
 }
 
 variable "private_cluster_enabled" {
   type        = bool
   description = "Whether the private cluster is enabled."
-  default     = true
 }
 
 variable "enable_auto_scaling" {
   type        = bool
   description = "Whether autoscaling is enabled."
-  default     = true
 }
 
 variable "minimum_nodes" {
   type        = number
   description = "The minimum number of nodes in the AKS cluster."
-  default     = 1
 }
 
 variable "maximum_nodes" {
   type        = number
   description = "The maximum number of nodes in the AKS cluster."
-  default     = 3
 }
 
 variable "private_dns_zone_id" {
   type        = string
   description = "The ID of the custom Private DNS Zone to link with the private AKS cluster."
-  default     = null
 }
 
 variable "tenant_id" {
   type        = string
   description = "The Tenant ID for Microsoft Entra ID authentication."
-  default     = null
 }
 
 variable "azure_rbac_enabled" {
   type        = bool
   description = "Whether to enable Azure RBAC for Kubernetes authorization."
-  default     = true
 }
 
 variable "admin_group_object_ids" {
   type        = list(string)
   description = "A list of Object IDs of Microsoft Entra ID Groups that should have admin access to the cluster."
-  default     = []
 }
