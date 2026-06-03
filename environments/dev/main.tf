@@ -41,10 +41,12 @@ resource "azurerm_user_assigned_identity" "aks_identity" {
 }
 
 # 2. Grant Network Contributor on the VNet to the Control Plane Identity
-resource "azurerm_role_assignment" "aks_network_contributor" {
+module "aks_network_contributor" {
+  source = "../../modules/role_assignment"
+
+  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
   scope                = module.vnet.vnet_id
   role_definition_name = "Network Contributor"
-  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
 }
 
 module "aks" {
@@ -72,9 +74,11 @@ module "aks" {
   admin_group_object_ids    = var.admin_group_object_ids
 }
 
+# 3. Grant AcrPull on the ACR to the AKS Kubelet Identity
 module "aks_acr_role_assignment" {
-  source = "../../modules/aks_acr_role_assignment"
+  source = "../../modules/role_assignment"
 
-  aks_kubelet_identity_object_id = module.aks.aks_kubelet_identity_object_id
-  acr_id                         = module.acr.acr_id
+  principal_id         = module.aks.aks_kubelet_identity_object_id
+  scope                = module.acr.acr_id
+  role_definition_name = "AcrPull"
 }
