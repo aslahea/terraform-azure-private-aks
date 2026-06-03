@@ -72,9 +72,9 @@ module "aks" {
   admin_group_object_ids    = var.admin_group_object_ids
 }
 
-# 3. Grant AcrPull on the ACR to the AKS Kubelet Identity
-resource "azurerm_role_assignment" "aks_acr_pull" {
-  scope                = module.acr.acr_id
-  role_definition_name = "AcrPull"
-  principal_id         = module.aks.aks_kubelet_identity_object_id
+module "aks_acr_role_assignment" {
+  source = "../../modules/aks_acr_role_assignment"
+
+  aks_kubelet_identity_object_id = module.aks.aks_kubelet_identity_object_id
+  acr_id                         = module.acr.acr_id
 }
