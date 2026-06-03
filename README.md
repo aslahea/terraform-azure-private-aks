@@ -14,13 +14,13 @@ The architecture enforces the **least exposure** security principle. The AKS API
 
 ```mermaid
 graph TD
-    subgraph Azure Cloud Subscription
-        subgraph Virtual Network (10.240.0.0/16)
-            subgraph AKS Subnet (10.240.0.0/22)
+    subgraph "Azure Cloud Subscription"
+        subgraph VNET["Virtual Network (10.240.0.0/16)"]
+            subgraph "AKS Subnet (10.240.0.0/22)"
                 AKS["Private AKS Cluster (v1.33)"]
             end
             
-            subgraph Validation Subnet (10.240.4.0/24)
+            subgraph "Validation Subnet (10.240.4.0/24)"
                 NSG["Network Security Group (Restricted SSH)"]
                 VM["Validation VM (Ubuntu 22.04)"]
                 NSG --> VM
@@ -31,7 +31,7 @@ graph TD
         DNS["Private DNS Zone (privatelink.centralindia.azmk8s.io)"]
         
         %% Links
-        DNS -.->|VNet Link| Virtual Network
+        DNS -.->|VNet Link| VNET
         VM -->|SSH Ingress| NSG
         VM -->|Resolve FQDN| DNS
         AKS -->|Integrate| DNS
