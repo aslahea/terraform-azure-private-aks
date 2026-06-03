@@ -36,3 +36,5 @@ private_dns_zone_id       = null
 tenant_id                 = null
 azure_rbac_enabled        = true
 admin_group_object_ids    = []
+aks_network_role_name     = "Network Contributor"
+aks_acr_role_name         = "AcrPull"

@@ -46,7 +46,7 @@ module "aks_network_contributor" {
 
   principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
   scope                = module.vnet.vnet_id
-  role_definition_name = "Network Contributor"
+  role_definition_name = var.aks_network_role_name
 }
 
 module "aks" {
@@ -80,5 +80,5 @@ module "aks_acr_role_assignment" {
 
   principal_id         = module.aks.aks_kubelet_identity_object_id
   scope                = module.acr.acr_id
-  role_definition_name = "AcrPull"
+  role_definition_name = var.aks_acr_role_name
 }

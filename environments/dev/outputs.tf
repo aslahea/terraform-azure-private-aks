@@ -56,3 +56,14 @@ output "aks_control_plane_fqdn" {
   value       = module.aks.aks_control_plane_fqdn
   description = "The private FQDN of the AKS API server."
 }
+
+# Role Assignment Outputs
+output "aks_network_contributor_role_assignment_id" {
+  value       = module.aks_network_contributor.role_assignment_id
+  description = "The ID of the Network Contributor Role Assignment."
+}
+
+output "aks_acr_pull_role_assignment_id" {
+  value       = module.aks_acr_role_assignment.role_assignment_id
+  description = "The ID of the AcrPull Role Assignment."
+}

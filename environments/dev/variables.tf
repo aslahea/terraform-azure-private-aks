@@ -125,3 +125,13 @@ variable "admin_group_object_ids" {
   type        = list(string)
   description = "A list of Object IDs of Microsoft Entra ID Groups that should have admin access to the cluster."
 }
+
+variable "aks_network_role_name" {
+  type        = string
+  description = "The role definition name to assign to the AKS control plane identity over the VNet."
+}
+
+variable "aks_acr_role_name" {
+  type        = string
+  description = "The role definition name to assign to the AKS Kubelet identity over the ACR."
+}
