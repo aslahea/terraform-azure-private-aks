@@ -67,3 +67,19 @@ output "aks_acr_pull_role_assignment_id" {
   value       = module.aks_acr_role_assignment.role_assignment_id
   description = "The ID of the AcrPull Role Assignment."
 }
+
+# DNS Zone Outputs
+output "private_dns_zone_id" {
+  value       = module.dns_zone.private_dns_zone_id
+  description = "The Resource ID of the Private DNS Zone."
+}
+
+output "private_dns_zone_name" {
+  value       = module.dns_zone.private_dns_zone_name
+  description = "The name of the Private DNS Zone."
+}
+
+output "aks_dns_contributor_role_assignment_id" {
+  value       = module.aks_dns_contributor.role_assignment_id
+  description = "The ID of the Private DNS Zone Contributor Role Assignment."
+}
