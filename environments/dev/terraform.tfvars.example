@@ -25,7 +25,7 @@ acr_admin_enabled = false
 # AKS variables
 aks_name                  = "week42-aks"
 dns_prefix                = "week42aks"
-kubernetes_version        = "1.30"
+kubernetes_version        = "1.33"
 node_count                = 1
 vm_size                   = "Standard_D2s_v3"
 private_cluster_enabled   = true
