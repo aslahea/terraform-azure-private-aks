@@ -32,7 +32,18 @@ module "acr" {
   tags                = var.tags
 }
 
-# 1. User-Assigned Identity for the AKS Control Plane
+# 1. Private DNS Zone for Private Link
+module "dns_zone" {
+  source = "../../modules/dns_zone"
+
+  private_dns_zone_name = "privatelink.${module.resource_group.location}.azmk8s.io"
+  resource_group_name   = module.resource_group.resource_group_name
+  vnet_id               = module.vnet.vnet_id
+  vnet_link_name        = "${var.vnet_name}-link"
+  tags                  = var.tags
+}
+
+# 2. User-Assigned Identity for the AKS Control Plane
 resource "azurerm_user_assigned_identity" "aks_identity" {
   name                = "mi-${var.aks_name}-control-plane"
   resource_group_name = module.resource_group.resource_group_name
@@ -40,13 +51,22 @@ resource "azurerm_user_assigned_identity" "aks_identity" {
   tags                = var.tags
 }
 
-# 2. Grant Network Contributor on the VNet to the Control Plane Identity
+# 3. Grant Network Contributor on the VNet to the Control Plane Identity
 module "aks_network_contributor" {
   source = "../../modules/role_assignment"
 
   principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
   scope                = module.vnet.vnet_id
   role_definition_name = var.aks_network_role_name
+}
+
+# 4. Grant Private DNS Zone Contributor on the DNS Zone to the Control Plane Identity
+module "aks_dns_contributor" {
+  source = "../../modules/role_assignment"
+
+  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
+  scope                = module.dns_zone.private_dns_zone_id
+  role_definition_name = var.aks_dns_role_name
 }
 
 module "aks" {
@@ -67,14 +87,14 @@ module "aks" {
   enable_auto_scaling       = var.enable_auto_scaling
   minimum_nodes             = var.minimum_nodes
   maximum_nodes             = var.maximum_nodes
-  private_dns_zone_id       = var.private_dns_zone_id
+  private_dns_zone_id       = module.dns_zone.private_dns_zone_id
   user_assigned_identity_id = azurerm_user_assigned_identity.aks_identity.id
   tenant_id                 = var.tenant_id
   azure_rbac_enabled        = var.azure_rbac_enabled
   admin_group_object_ids    = var.admin_group_object_ids
 }
 
-# 3. Grant AcrPull on the ACR to the AKS Kubelet Identity
+# 5. Grant AcrPull on the ACR to the AKS Kubelet Identity
 module "aks_acr_role_assignment" {
   source = "../../modules/role_assignment"
 

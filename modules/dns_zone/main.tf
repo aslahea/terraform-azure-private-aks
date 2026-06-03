@@ -12,4 +12,3 @@ resource "azurerm_private_dns_zone_virtual_network_link" "aks_vnet_link" {
 
   registration_enabled = false
 }
-}

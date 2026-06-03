@@ -38,3 +38,4 @@ azure_rbac_enabled        = true
 admin_group_object_ids    = []
 aks_network_role_name     = "Network Contributor"
 aks_acr_role_name         = "AcrPull"
+aks_dns_role_name         = "Private DNS Zone Contributor"

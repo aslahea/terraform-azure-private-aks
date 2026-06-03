@@ -135,3 +135,8 @@ variable "aks_acr_role_name" {
   type        = string
   description = "The role definition name to assign to the AKS Kubelet identity over the ACR."
 }
+
+variable "aks_dns_role_name" {
+  type        = string
+  description = "The role definition name to assign to the AKS control plane identity over the Private DNS Zone."
+}
