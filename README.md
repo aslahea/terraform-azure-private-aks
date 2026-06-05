@@ -20,6 +20,8 @@ graph TD
         subgraph VNET["Virtual Network (10.240.0.0/16)"]
             subgraph "AKS Subnet (10.240.0.0/22)"
                 AKS["Private AKS Cluster (v1.33)"]
+                PE["Private Endpoint (Private Link)"]
+                AKS ====>|Exposes API Server via| PE
             end
             
             subgraph "Validation Subnet (10.240.4.0/24)"
@@ -35,7 +37,7 @@ graph TD
         %% Links
         DNS -.->|VNet Link| VNET
         VM -->|Resolve FQDN| DNS
-        AKS -->|Integrate| DNS
+        VM -->|Access API Server| PE
         AKS -->|Authenticate| ACR
     end
 ```
