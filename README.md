@@ -14,6 +14,8 @@ The architecture enforces the **least exposure** security principle. The AKS API
 
 ```mermaid
 graph TD
+    Operator["External Operator"] -->|SSH Ingress| NSG
+    
     subgraph "Azure Cloud Subscription"
         subgraph VNET["Virtual Network (10.240.0.0/16)"]
             subgraph "AKS Subnet (10.240.0.0/22)"
@@ -32,7 +34,6 @@ graph TD
         
         %% Links
         DNS -.->|VNet Link| VNET
-        VM -->|SSH Ingress| NSG
         VM -->|Resolve FQDN| DNS
         AKS -->|Integrate| DNS
         AKS -->|Authenticate| ACR
